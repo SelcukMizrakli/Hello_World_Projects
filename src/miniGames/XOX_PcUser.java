@@ -31,20 +31,66 @@ public class XOX_PcUser {
             System.out.println("");
         }
         System.out.println("Oyun başlatiliyor...\nYapmak istediğiniz hamleyi numlock kısmınızdan seçiniz(1,2,3,4,5,6,7,8,9)");
+
         while (pozitif) {
-            System.out.println("Lütfen \'X\' veya \'O\' seçeneklerinden birisini seçiniz.");
-            kullaniciKarakteri = scanner.next();
-            if (kullaniciKarakteri.equalsIgnoreCase("X") || kullaniciKarakteri.equalsIgnoreCase("O")) {
-                if (kullaniciKarakteri.equalsIgnoreCase("X")) {
-                    kullaniciKarakteri = kullaniciKarakteri.toUpperCase();
-                    kullaniciKarakteri2 = "O";
+            System.out.println("Zarlar Atılıyor...\nX-O Belirleniyor...");
+            Random zarSayisiKullanici = new Random();
+            int userZarScore = zarSayisiKullanici.nextInt(12);
+            Random zarSayisiPC = new Random();
+            int pcZarScore = zarSayisiPC.nextInt(12);
+
+            if (userZarScore != pcZarScore) {
+                if (userZarScore > pcZarScore) {
+                    System.out.println("Lütfen \'X\' veya \'O\' seçeneklerinden birisini seçiniz.");
+                    kullaniciKarakteri = scanner.next();
+                    if (kullaniciKarakteri.equalsIgnoreCase("X") || kullaniciKarakteri.equalsIgnoreCase("O")) {
+                        if (kullaniciKarakteri.equalsIgnoreCase("X")) {
+                            kullaniciKarakteri = kullaniciKarakteri.toUpperCase();
+                            kullaniciKarakteri2 = "O";
+                            System.out.println("OYUN BAŞLADI");
+                            pozitif = false;
+                            break;
+                        } else {
+                            kullaniciKarakteri2 = "X";
+                            kullaniciKarakteri = kullaniciKarakteri.toUpperCase();
+                            System.out.println("OYUN BAŞLADI");
+                            pozitif = false;
+                            break;
+                        }
+
+                    }
                 } else {
-                    kullaniciKarakteri2 = "X";
-                    kullaniciKarakteri = kullaniciKarakteri.toUpperCase();
+                    zarSayisiPC = new Random(2);
+                    pcZarScore = zarSayisiPC.nextInt(1, 2);
+                    switch (pcZarScore) {
+                        case 1:
+                            kullaniciKarakteri = "O";
+                            kullaniciKarakteri2 = "X";
+                            System.out.println("OYUN BAŞLADI");
+                            pozitif = false;
+                            break;
+                        case 2:
+                            kullaniciKarakteri = "X";
+                            kullaniciKarakteri2 = "O";
+                            System.out.println("OYUN BAŞLADI");
+                            pozitif = false;
+                            break;
+                    }
                 }
-                break;
+            } else {
+                while (userZarScore == pcZarScore) {
+                    zarSayisiKullanici = new Random(12);
+                    zarSayisiPC = new Random(12);
+
+                    userZarScore = zarSayisiKullanici.nextInt(1, 12);
+                    pcZarScore = zarSayisiPC.nextInt(1, 12);
+                }
             }
+
         }
+        pozitif = true;
+
+        System.out.println("Siz : " + kullaniciKarakteri+"\nBilgisayar : " + kullaniciKarakteri2);
 
         int sayacUser1 = 0, sayacUser2 = 0, sayac = 0;
         while (pozitif) {
