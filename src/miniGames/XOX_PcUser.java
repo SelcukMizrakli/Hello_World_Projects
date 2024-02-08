@@ -20,7 +20,7 @@ public class XOX_PcUser {
     static String kullaniciKarakteri2;
     static String buraDolu = "         BURA DOLU";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         Random rnd = new Random();
         String[][] xox = {{"☺", "☻", "☺"}, {"☻", "☺", "☻"}, {"☺", "☻", "☺"}};
@@ -34,10 +34,13 @@ public class XOX_PcUser {
 
         while (pozitif) {
             System.out.println("Zarlar Atılıyor...\nX-O Belirleniyor...");
+            Thread.sleep(5000);
             Random zarSayisiKullanici = new Random();
             int userZarScore = zarSayisiKullanici.nextInt(12);
             Random zarSayisiPC = new Random();
             int pcZarScore = zarSayisiPC.nextInt(12);
+            System.out.println("Kullanıcı Zar Sonucu : " + userZarScore +"\nBilgisayar Zar Sonucu : " +pcZarScore);
+            Thread.sleep(2000);
 
             if (userZarScore != pcZarScore) {
                 if (userZarScore > pcZarScore) {
