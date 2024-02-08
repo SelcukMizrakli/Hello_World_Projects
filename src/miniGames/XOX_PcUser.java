@@ -36,9 +36,9 @@ public class XOX_PcUser {
             System.out.println("Zarlar Atılıyor...\nX-O Belirleniyor...");
             Thread.sleep(5000);
             Random zarSayisiKullanici = new Random();
-            int userZarScore = zarSayisiKullanici.nextInt(12);
+            int userZarScore = zarSayisiKullanici.nextInt(2,12);
             Random zarSayisiPC = new Random();
-            int pcZarScore = zarSayisiPC.nextInt(12);
+            int pcZarScore = zarSayisiPC.nextInt(2,12);
             System.out.println("Kullanıcı Zar Sonucu : " + userZarScore +"\nBilgisayar Zar Sonucu : " +pcZarScore);
             Thread.sleep(2000);
 
